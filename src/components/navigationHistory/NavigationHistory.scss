@@ -1,0 +1,64 @@
+.navigationHistory {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+
+    &__btn {
+        display: flex;
+        align-items: center;
+
+        &-notActive {
+            color: #8B8B8B;
+            cursor: pointer;
+            background-color: #fefff1;
+            padding: 8px 16px;
+            border: 1px solid #DDDDDD;
+            display: inline-block;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+
+            body.dark & {
+                background-color: #424436;
+            }
+        }
+
+        &-notActive:hover {
+            background: rgb(242, 246, 211);
+        }
+
+        .__active {
+            color: #424436 !important;
+        }
+
+        .__active {
+            body.dark & {
+                color: #FFFFFF !important;
+            }
+        }
+
+        &__linie {
+            width: 16px;
+            height: 1px;
+            background-color: #DDDDDD;
+
+        }
+    }
+
+}
+
+.navigationHistory::-webkit-scrollbar {
+    height: 0;
+}
+
+
+@media screen and (max-width: 595px) {
+    .navigationHistory {
+        display: none;
+    }
+
+}

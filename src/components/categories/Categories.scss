@@ -1,0 +1,55 @@
+.catedoryCard {
+    transition: all .3s;
+
+    &__image {
+        width: 100%; // Занимает всю доступную ширину
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        padding-top: 111%;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;  
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &:hover {
+        transform: scale(1.13);
+    }
+    
+    &:active {
+        transform: scale(1.13);
+    }
+
+    &__title {
+        font-size: 20px;
+        color: #424436;
+        text-align: center;
+        font-weight: 500;
+        margin: 16px 0 0px 0;
+
+        body.dark & {
+            color: #FFFFFF;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+  .catedoryCard {
+    max-width: 320px;
+    margin: 0 auto;
+
+    &__image {
+      padding-top: 120%;
+    }
+
+    &__title {
+      font-size: 16px;
+    }
+  }
+}

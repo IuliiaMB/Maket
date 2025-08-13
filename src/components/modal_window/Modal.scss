@@ -1,0 +1,475 @@
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 150px;
+  /* Отступ сверху для центрирования по вертикали */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  //overflow-y: auto; /* Позволяет прокручивать содержимое, если оно превышает высоту окна */
+  align-items: center;
+  padding: 32px 0;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #92A134;
+  padding: 32px;
+  border-radius: 10px;
+  max-width: 484px;
+  height: 80vh;
+  max-height: 600px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  color: #FFFFF1;
+  text-align: center;
+}
+
+.discount-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 548px;
+  max-height: 664px;
+  width: 100%;
+  height: 100%;
+  background: #92A134;
+  border-radius: 10px;
+
+  .discount-title-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    max-width: 484px;
+    /* та же ширина, что и у карточки товара */
+    box-sizing: border-box;
+
+
+    .discount-title {
+      color: #FFFFFF;
+      text-align: left;
+      font-weight: 500;
+      font-size: 30px;
+      max-width: 85%; // ограничиваем ширину заголовка
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 34px;
+      cursor: pointer;
+      color: #FFFFF1;
+      padding: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+    }
+  }
+
+
+  .product-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 420px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; //чтобы лишний контент не выходил за границы
+
+    .product-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 240px;
+      height: 240px;
+      width: 60%;
+      border-radius: 10px;
+      overflow: hidden;
+
+
+      .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .discount-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #F26D22;
+        color: white;
+        padding: 8px 8px;
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: bold;
+        max-width: 68px;
+        max-height: 34px;
+      }
+
+      .like-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: #1E1E1E;
+        font-size: 38px;
+        cursor: pointer;
+      }
+    }
+
+    .product-divider {
+      width: 100%;
+      height: 1px;
+      background: #DDDDDD;
+      margin: 10px 0;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      padding-left: 20px;
+      gap: 10px;
+      border-radius: 10px;
+      color: #424436;
+      max-height: 138px;
+      max-width: 484px;
+      width: 100%;
+      box-sizing: border-box;
+
+
+      .product-name {
+        text-align: left;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        height: 48px; // высота двух строк с учётом line-height
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        padding-right: 8px;
+
+
+      }
+
+      .price-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        align-items: baseline;
+        padding-bottom: 20px;
+
+
+        .current-price {
+          font-size: 35px;
+          font-weight: bold;
+          color: #424436;
+        }
+
+        .old-price {
+          font-size: 17px;
+          color: #999;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+
+  .addToCart-container {
+    width: 100%;
+    max-height: 56px;
+
+    .add-to-cart-btn {
+      background: #FFFFFF;
+      color: #424436;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      height: 58px; // явно задаём высоту
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #424436;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+// СЕРДЕЧКО В МОДАЛЬНОМ ОКНЕ
+.product__icons {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+
+  &-item {
+    position: relative;
+    width: 47px;
+    height: 47px;
+  }
+
+  &-heart-fill,
+  &-heart-stroke,
+  &-hoppingBag-fill,
+  &-hoppingBag-stroke {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 48px;
+  }
+
+  &-heart-fill,
+  &-hoppingBag-fill {
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #000000;
+    }
+
+    &.liked {
+      color: #92A134;
+    }
+  }
+
+
+  &-heart-stroke,
+  &-hoppingBag-stroke {
+    color: #424436;
+    z-index: 1;
+    pointer-events: none;
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
+
+/* МЕДИА-ЗАПРОСЫ */
+
+@media (max-width: 1000px) {
+  .modal-overlay {
+    .modal-content {
+      .discount-modal {
+        .discount-title-container {
+          .discount-title {
+            font-size: 27px;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    align-items: center;
+    //padding-top: 100px; 
+
+    .modal-content {
+      padding: 12px; // уменьшаем отступы
+      max-width: 70vw;
+      width: 100%;
+      max-height: 90vh;
+      height: 100%;
+
+      .discount-modal {
+
+        .discount-title-container {
+          .discount-title {
+            font-size: 17px;
+            line-height: 1.5;
+            max-width: 80%;
+          }
+
+          .modal-close-btn {
+            font-size: 24px;
+
+          }
+        }
+
+        .product-container {
+
+          width: 100%;
+          height: auto;
+
+          .product-image-container {
+            width: 60%;
+            height: 70%;
+
+            .product-image {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+
+            .discount-badge {
+              font-size: 12px;
+              padding: 6px 8px;
+              max-width: 45px;
+              max-height: 28px;
+            }
+
+            .product__icons {
+              top: 6px;
+              right: 6px;
+              gap: 6px;
+
+              &-item {
+                width: 32px;
+                height: 32px;
+              }
+
+              &-heart-fill,
+              &-heart-stroke,
+              &-hoppingBag-fill,
+              &-hoppingBag-stroke {
+                font-size: 30px;
+              }
+            }
+
+
+          }
+
+          .product-info {
+            max-height: 30%; // ограничиваем высоту информации о продукте
+
+            .product-name {
+              font-size: 17px; // уменьшаем размер шрифта названия продукта
+              line-height: 1.4; // уменьшаем межстрочный интервал
+            }
+
+            .price-wrapper {
+              .current-price {
+                font-size: 21px; // уменьшаем размер шрифта текущей цены
+              }
+
+              .old-price {
+                font-size: 14px; // уменьшаем размер шрифта старой цены
+              }
+            }
+          }
+        }
+
+        .addToCart-container {
+          .add-to-cart-btn {
+            font-size: 16px; // уменьшаем размер шрифта кнопки
+            height: 48px; // уменьшаем высоту кнопки
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    .modal-content {
+      max-width: 70vw;
+      width: 100%;
+      max-height: 80vh;
+      height: 100%;
+
+      .discount-modal {
+        .discount-title-container {
+          .discount-title {
+            font-size: 15px;
+            line-height: 1.4;
+            max-width: 80%;
+          }
+
+          .modal-close-btn {
+            font-size: 20px;
+          }
+        }
+
+        .product-container {
+          width: 100%;
+          height: auto;
+
+          .product-image-container {
+            width: 62%;
+            height: 70%;
+
+            .product-image {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+
+            .discount-badge {
+              font-size: 10px;
+              padding: 4px 6px;
+              max-width: 37px;
+              max-height: 30px;
+            }
+          }
+
+          .product-info {
+            max-height: 35%;
+
+            .product-name {
+              font-size: 14px; 
+              line-height: 1.2;
+
+            }
+
+            .price-wrapper {
+              max-height: 40%;
+              .current-price {
+                font-size: 16px; 
+              }
+
+              .old-price {
+                font-size: 12px; 
+              }
+            }
+          }
+        }
+
+        .addToCart-container {
+          .add-to-cart-btn {
+            font-size: 14px; // уменьшаем размер шрифта кнопки
+            height: 40px; // уменьшаем высоту кнопки
+          }
+        }
+      }
+    }
+
+  }
+}

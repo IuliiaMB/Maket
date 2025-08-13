@@ -1,0 +1,22 @@
+.customCheckbox {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 6px;
+    background: rgb(255, 255, 255);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+
+    &-checked {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(146, 162, 52);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            fill:rgb(255, 255, 241)
+        }
+    }
+}

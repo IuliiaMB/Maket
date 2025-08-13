@@ -1,0 +1,259 @@
+.discount {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    &-banner {
+        max-width: 1360px;
+        width: 100%;
+        margin: 0 32px;
+        background: linear-gradient(80.46deg, #87933D -0.68%, #55610B 66.66%);
+        border-radius: 16px;
+        padding: 32px;
+        overflow: hidden;
+    
+        &__title {
+            font-weight: 700;
+            font-size: 70px;
+            letter-spacing: -0.2px;
+            line-height: 110%;
+            text-align: center;
+            color: #FFFFFF;
+            padding-bottom: 56px;
+        }
+    
+        &__content {
+            display: flex;
+            justify-content: flex-end;
+        }
+    
+        &__form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 516px;
+            width: 100%;
+            position: relative;
+    
+            &-img {
+                position: absolute;
+                left: 0;
+                transform: translateX(-105%);
+                bottom: -32px;
+            }
+    
+            .error-content {
+                height: 31px;
+            }
+    
+            .discount-banner__inputs {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+    
+                input {
+                    padding: 16px 32px;
+                    border-radius: 5px;
+                    border: 2px solid #FFFFFF;
+                    background-color: #55610B;
+                    transition: all 0.3s ease;
+                    font-size: 20px;
+                    color: #ffffff;
+                    
+                    &::placeholder {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 130%;
+                        color: #ffffffaa;
+                    }
+    
+                    &:active {
+                        transform: scale(0.97);
+                        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+                    }
+    
+                    &:focus {
+                        border-color: #aaffaa;
+                        background-color: #55610B;
+                        box-shadow: 0 0 15px #aaffaa88;
+                        outline: none;
+                    }
+    
+                    &:not(:placeholder-shown) {
+                        border-color: #ffff88;
+                        box-shadow: 0 0 10px #ffff8880;
+                    }
+                }
+    
+                .form-error-message {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 126%;
+                    color: #FFFFF1;
+                }
+    
+                .success-message {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 126%;
+                    color: #FFFFF1;
+                }
+    
+                .api-error-message {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 126%;
+                    color: #FFFFF1;
+                }
+    
+                .input-error {
+                    border-color: #dc3545 !important;
+                    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+                }
+    
+                .form-general-error-message {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 126%;
+                    color: #FFFFF1;
+                    display: flex;
+                    gap: 8px;
+                    justify-content: start;
+                }
+            }
+    
+            &__button.success {
+                button {
+                    background-color: rgb(242, 246, 211);
+                    color: rgb(146, 162, 52);
+                }
+            }
+    
+            .discount-banner__button {
+                display: flex;
+                margin-top: 12px;
+                width: 100%;
+            }
+            
+           
+            button {
+                width: 100%;
+                padding: 16px 32px;
+                border-radius: 5px;
+                border: none;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 130%;
+                color: #424436;
+                background-color: #f5f5dc;
+                cursor: pointer;
+                transition: all 0.2s ease, box-shadow 0.2s ease;
+                
+                &:hover {
+                    background: #424436;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                    color: #FFFFFF;
+                }
+                &:disabled {
+                     color: #92A134 !important;
+                     background-color: #F2F6D3 !important;
+                     cursor: no-drop;
+                     transform: scale(1) !important;
+                }
+    
+                &:active {
+                    transform: scale(0.97);
+                    background-color: #e6e6c8;
+                    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width : 1000px) {
+    .discount-banner {
+        margin: 0 20px;
+        &__title {
+            font-size: clamp(56px, 6vw, 64px);
+        }
+
+        &__form {
+            max-width: 450px;
+
+            &-img {
+                max-width: 602px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 768px) {
+    .discount-banner {
+        &__title {
+            padding-bottom: 24px;
+        }
+
+        &__form {
+            max-width: 334px;
+
+            &-img {
+                max-width: 602px;
+            }
+
+            &__inputs {
+                .form-general-error-message {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 480px) {
+    .discount-banner {
+        margin: 0;
+        width: calc(100% - 64px);
+
+        &__title {
+            font-size: 48px;
+        }
+
+        &__form {
+            max-width: 100%;
+            &-img {
+                width:100%;
+                position: relative;
+                transform: translate(0);
+            }
+
+            button {
+                font-size: 18px;
+            }
+
+
+            &__inputs {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                input {
+                    padding: 10px 20px;
+                    font-size: 18px;
+
+                    &::placeholder {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            &-img {
+                max-width: 602px;
+            }
+        }
+    }
+}
